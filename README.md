@@ -8,7 +8,7 @@
 - VUEX
 - JAVASCRIPT
 # Screenshot
-![screenshot](https://github.com/olawale-o/vue-awesome-books/blob/dev/src/assets/screenshot.png?raw=true")
+![screenshot](https://github.com/olawale-o/vue-awesome-books/blob/main/src/assets/screenshot.png?raw=true")
 
 # Authors
 :bust_in_silhouette: Omoogun Olawale
