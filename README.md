@@ -1,5 +1,6 @@
 # vue-awesome-books
 
+> This project allows you to add and remove a book
 # Built with 
 
 - HTML
