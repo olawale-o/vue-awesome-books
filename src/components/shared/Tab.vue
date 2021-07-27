@@ -18,7 +18,6 @@ export default {
   props: [ 'link' ],
   setup() {
     const currentLink = inject('currentLink');
-    console.log(currentLink)
     return  {
       currentLink
     }
