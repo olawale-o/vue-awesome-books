@@ -11,12 +11,14 @@
         </li>
       </ul>
     </nav>
-    <p class="date" id="date"></p>
+    <p class="date" id="date">{{ date }}</p>
   </header>
 </template>
 
 <script>
-
+import { ref, onMounted } from 'vue';
+import { DateTime } from 'luxon';
+import numberSuffix from '../helpers/index.js';
 export default {
   name: 'NavComponent',
   props: {
@@ -30,11 +32,29 @@ export default {
     }
   },
   setup(props, { emit }) {
+    const date = ref(null);
+
     const onChangeLink = (link) => {
       emit('changeLink', link)
     }
+
+    const updateDate = () => {
+      setInterval(() => {
+        const today = DateTime.local();
+        const format = { ...DateTime.DATETIME_MED_WITH_SECONDS, month: 'long' };
+        const modifiedDate = today.toLocaleString(format).split(' ');
+        const dayNumber = parseInt(modifiedDate[1], 10);
+        modifiedDate[1] = dayNumber + numberSuffix(dayNumber);
+        modifiedDate[modifiedDate.length - 1] = (modifiedDate[modifiedDate.length - 1]).toLowerCase();
+        date.value = modifiedDate.join(' ');
+      }, 1000);
+    };
+
+    onMounted(() => updateDate());
+
+
     return {
-      onChangeLink
+      onChangeLink, date, updateDate
     }
   }
 }
