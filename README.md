@@ -10,6 +10,8 @@
 # Screenshot
 ![screenshot](https://github.com/olawale-o/vue-awesome-books/blob/main/src/assets/screenshot.png?raw=true")
 
+# Demo link
+Visit Demo [link](https://vue-awesome-books.netlify.app)
 # Authors
 :bust_in_silhouette: Omoogun Olawale
 
@@ -24,3 +26,8 @@ Feel free to check the [issues page.](https://github.com/olawale-o/vue-awesome-b
 
 # Show your support
 Give a :star: if you like this project!
+
+# Credits
+- Netlify
+- Microverse
+- Github
