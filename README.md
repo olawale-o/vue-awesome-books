@@ -25,7 +25,7 @@ npm install
 
 ```bash
 npm run serve
-``
+```
 # Authors
 :bust_in_silhouette: Omoogun Olawale
 
