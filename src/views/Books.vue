@@ -5,30 +5,11 @@
         <div class="book-heading">
         <h2>All awesome books</h2>
        </div>
-       <ul class="list-of-books" id="book-list">
-            <BookComponent 
-              v-for="book in bookStore" 
-              :key="book.id" 
-              :book="book"
-              @removeBook="onRemoveBook" />
-        </ul>
+        <BookComponent @removeBook="onRemoveBook" />
       </div>
     </Tab>
     <Tab link="Add new">
-      <div class="form" id="form">
-        <h2>Add a new book</h2>
-        <form class="add-book-form" id="add-book-form" @submit.prevent="onFormSubmit">
-          <div>
-            <input type="text" name="title" v-model="book.title" placeholder="Title" required>
-            <p id="title-error"></p>
-          </div>
-          <div>
-            <input type="text" name="author" v-model="book.author" placeholder="Author" required>
-            <p id="author-error"></p>
-          </div>
-          <input type="submit" value="Add" id="add-book-button">
-        </form>
-      </div>
+      <AddBookComponent @addBook="onFormSubmit" />
     </Tab>
     <Tab link="Contact">
       <div class="contacts" id="contacts">
@@ -50,26 +31,22 @@
 import Tabs from '@/components/shared/Tabs.vue';
 import Tab from '@/components/shared/Tab.vue';
 import BookComponent from '@/components/BookComponent.vue';
-import { reactive, computed } from 'vue';
-import { addBook, removeBook } from '@/store/books/actions/action_creators.js';
+import AddBookComponent from '@/components/AddBookComponent.vue';
+import { computed } from 'vue';
+import { removeBook, addBook } from '@/store/books/actions/action_creators.js';
 import { useStore } from 'vuex';
 export default {
   name: 'Books',
-  components: { BookComponent, Tabs, Tab },
+  components: { BookComponent, Tabs, Tab, AddBookComponent, },
   setup() {
-    const book = reactive({
-      id: '',
-      author: '',
-      title: ''
-    });
-    const { dispatch, getters }  = useStore();
-    const bookStore = computed(() => getters['books/books']);
-    const onFormSubmit = () => {
-      book.id = bookStore.value.length + 1;
-      console.log(book)
+    const {dispatch, getters }  = useStore();
+    const books = computed(() => getters['books/books']);
+    // enable the line below if you want to switch to provide/inject API
+    // make sure you change the books array value to an array e.g ref([])
+    // provide('bookStore' , books);
+    const onFormSubmit = (book) => {
+      book.id = books.value.length + 1;
       dispatch(addBook(book))
-      book.author = '';
-      book.title = '';
     };
     
     const onRemoveBook = (bookId) => {
@@ -77,7 +54,7 @@ export default {
     }
     
     return {
-        onFormSubmit, book, bookStore, onRemoveBook,
+        onFormSubmit, onRemoveBook,
     }
   }
 }
