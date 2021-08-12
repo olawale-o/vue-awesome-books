@@ -13,7 +13,9 @@
   </ul>
 </template>
 <script>
-import { computed, inject } from 'vue';
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+
 export default {
   name: 'BookComponent',
   emits: ['removeBook'],
@@ -21,8 +23,11 @@ export default {
     book: Object,
   },
   setup(props, { emit }) {
-    const bookStore = inject('bookStore');
-    const books = computed(() => bookStore.value);
+    const { getters } = useStore();
+    const books = computed(() => getters["books/books"]);
+    // enable th lines below if you switch to provide/inject API
+    // const bookStore = inject('bookStore');
+    // const books = computed(() => bookStore.value);
     const onBookRemove = (id) => {
       emit('removeBook', id);
     }
