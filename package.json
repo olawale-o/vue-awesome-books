@@ -2,9 +2,10 @@
   "name": "vue-awesome-books",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://olawale-o/vue-awesome-books",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build && rm -rf docs && mv dist docs",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
