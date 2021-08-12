@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { ref, provide, } from 'vue';
+import { ref, provide } from 'vue';
 import NavComponent from '@/components/NavComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
 export default {
