@@ -31,7 +31,7 @@ npm run serve
 
 - Github: [Github](https://github.com/olawale-o)
 - Twitter: [Twitter](https://twitter.com/ibreaktherules)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/olawale-omoogun-330a051b1/)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/olawaleomoogun/)
 
 ### Contributing
 Contributions, issues, and feature requests are welcome!
