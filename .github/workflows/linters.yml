@@ -6,9 +6,10 @@ on:
 jobs:
   eslint:
     name: Eslint
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Default Pre Actions
+        uses: actions/checkout@v2
       - name: Use Nodejs
         uses: actions/setup-node@v1
       - name: Hello world
