@@ -9,8 +9,7 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
-      - name: Use nodejs
-      - uses: actions/setup-node@v1
+      - name: Use Nodejs
+        uses: actions/setup-node@v1
       - name: Hello world
         run: echo Greeting world
-        
