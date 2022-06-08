@@ -6,11 +6,15 @@ on:
 jobs:
   eslint:
     name: Eslint
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [10, 12]
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Default Pre Actions
         uses: actions/checkout@v2
       - name: Use Nodejs
         uses: actions/setup-node@v1
-      - name: Hello world
-        run: echo Greeting world
+      - name: Echo matrix name
+        run: echo Matrix OS ${{ matrix.os }}
