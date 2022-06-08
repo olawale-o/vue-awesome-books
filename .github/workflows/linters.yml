@@ -8,9 +8,8 @@ jobs:
     name: Eslint
     runs-on: ubuntu-18.04
     steps:
-      - name: Pre Actions
       - uses: actions/checkout@v2
-      - name: Another Pre Actions
+      - name: Use nodejs
       - uses: actions/setup-node@v1
       - name: Hello world
         run: echo Greeting world
