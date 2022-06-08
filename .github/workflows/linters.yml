@@ -9,12 +9,12 @@ jobs:
     strategy:
       matrix:
         node-version: [10.x, 12.x]
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Default Pre Actions
         uses: actions/checkout@v2
       - name: Use Nodejs
         uses: actions/setup-node@v1
-      - name: Echo matrix name
-        run: echo Matrix OS ${{ matrix.node-version }}
+      - name: Echo matrix node version
+        run: echo Matrix node version ${{ matrix.node-version }}
