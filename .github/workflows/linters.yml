@@ -12,9 +12,11 @@ jobs:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Default Pre Actions
+      - name: Git checkout
         uses: actions/checkout@v2
-      - name: Use Nodejs
+      - name: Use Nodejs ${{ matrix.node-version }}
         uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
       - name: Echo matrix node version
         run: echo Matrix node version ${{ matrix.node-version }}
