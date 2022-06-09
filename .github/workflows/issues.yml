@@ -2,8 +2,7 @@ name: Issues
 
 on:
   issues:
-    types:
-      - opened
+    types: [opened, edited]
 
 jobs:
   comment_issue:
