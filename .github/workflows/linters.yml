@@ -18,5 +18,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Echo matrix node version
-        run: echo Matrix node version ${{ matrix.node-version }}
+      - name: Setup ESLint
+        run: |
+          npm install --save-dev @vue/cli-plugin-babel@4.5.0 @vue/cli-plugin-eslint@4.5.0 babel-eslint@10.1.0 eslint@6.7.2 eslint-plugin-vue@7.0.0
+          [ -f .eslintrc.js]
+      - name: ESLint Report
+        run: npx eslint .
