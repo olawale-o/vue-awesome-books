@@ -1,30 +1,28 @@
 <template>
-    <main class="main" id="main">
+  <main class="main" id="main">
     <section class="book-section">
       <div class="book-container">
         <div class="book-container" v-show="link === currentLink.link">
-            <slot />
+          <slot />
         </div>
       </div>
     </section>
-  </main> 
+  </main>
 </template>
 
 <script>
 import { inject } from 'vue';
 export default {
   name: 'Tab',
-  inject: [ 'currentLink' ],
-  props: [ 'link' ],
+  inject: ['currentLink'],
+  props: ['link'],
   setup() {
     const currentLink = inject('currentLink');
-    return  {
-      currentLink
-    }
-  }
-}
+    return {
+      currentLink,
+    };
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

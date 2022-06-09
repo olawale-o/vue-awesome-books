@@ -10,10 +10,9 @@ import Books from './views/Books.vue';
 export default {
   name: 'App',
   components: {
-    Books
-  }
-}
+    Books,
+  },
+};
 </script>
 
-<style>
-</style>
+<style></style>
