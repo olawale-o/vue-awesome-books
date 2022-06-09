@@ -7,5 +7,5 @@ export const addBook = (credentials) => ({
 
 export const removeBook = (credentials) => ({
   type: REMOVE_BOOK,
-  credentials
+  credentials,
 });

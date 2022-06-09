@@ -24,20 +24,19 @@ export default {
   },
   setup(props, { emit }) {
     const { getters } = useStore();
-    const books = computed(() => getters["books/books"]);
+    const books = computed(() => getters['books/books']);
     // enable th lines below if you switch to provide/inject API
     // const bookStore = inject('bookStore');
     // const books = computed(() => bookStore.value);
     const onBookRemove = (id) => {
       emit('removeBook', id);
-    }
-    return  {
-      onBookRemove, books,
-    }
-  }
-}
+    };
+    return {
+      onBookRemove,
+      books,
+    };
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

@@ -1,4 +1,4 @@
-import { createStore } from 'vuex'
+import { createStore } from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 import booksModule from './books/index.js';
 
@@ -7,6 +7,6 @@ const store = createStore({
     books: booksModule,
   },
   plugins: [createPersistedState()],
-})
+});
 
 export default store;

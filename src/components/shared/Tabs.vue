@@ -1,7 +1,9 @@
 <template>
- <NavComponent :tabTitles="tabTitles" 
-  :currentLink="currentLink" 
-  @changeLink="onChangeLink" />
+  <NavComponent
+    :tabTitles="tabTitles"
+    :currentLink="currentLink"
+    @changeLink="onChangeLink"
+  />
   <slot />
   <FooterComponent />
 </template>
@@ -14,20 +16,20 @@ export default {
   name: 'Tabs',
   components: { NavComponent, FooterComponent },
   setup(props, { slots }) {
-    const tabTitles = ref(slots.default().map((tab) => ( { link: tab.props.link } ) ));
+    const tabTitles = ref(
+      slots.default().map((tab) => ({ link: tab.props.link }))
+    );
     const currentLink = ref(tabTitles.value[0]);
     provide('currentLink', currentLink);
     const onChangeLink = (link) => {
-     currentLink.value = link;
+      currentLink.value = link;
     };
     return {
-        tabTitles,
-        currentLink,
-        onChangeLink
-    }
-  }
-}
+      tabTitles,
+      currentLink,
+      onChangeLink,
+    };
+  },
+};
 </script>
-<style>
-
-</style>
+<style></style>

@@ -6,8 +6,15 @@
       </div>
       <ul class="nav-list" id="nav-list">
         <li class="nav-item" v-for="tabTitle in tabTitles" :key="tabTitle.link">
-          <a class="nav-link" href="#" role="button" @click="onChangeLink(tabTitle)"
-          :class="{'active': currentLink.link == tabTitle.link}">{{ tabTitle.link}}</a>
+          <a
+            class="nav-link"
+            href="#"
+            role="button"
+            @click="onChangeLink(tabTitle)"
+            :class="{ active: currentLink.link == tabTitle.link }"
+          >
+            {{ tabTitle.link }}
+          </a>
         </li>
       </ul>
     </nav>
@@ -23,20 +30,20 @@ export default {
   name: 'NavComponent',
   props: {
     tabTitles: {
-        type: Array,
-        required: true,
+      type: Array,
+      required: true,
     },
     currentLink: {
       type: Object,
       required: true,
-    }
+    },
   },
   setup(props, { emit }) {
     const date = ref(null);
 
     const onChangeLink = (link) => {
-      emit('changeLink', link)
-    }
+      emit('changeLink', link);
+    };
 
     const updateDate = () => {
       setInterval(() => {
@@ -45,21 +52,21 @@ export default {
         const modifiedDate = today.toLocaleString(format).split(' ');
         const dayNumber = parseInt(modifiedDate[1], 10);
         modifiedDate[1] = dayNumber + numberSuffix(dayNumber);
-        modifiedDate[modifiedDate.length - 1] = (modifiedDate[modifiedDate.length - 1]).toLowerCase();
+        modifiedDate[modifiedDate.length - 1] = modifiedDate[
+          modifiedDate.length - 1
+        ].toLowerCase();
         date.value = modifiedDate.join(' ');
       }, 1000);
     };
 
     onMounted(() => updateDate());
-
-
     return {
-      onChangeLink, date, updateDate
-    }
-  }
-}
+      onChangeLink,
+      date,
+      updateDate,
+    };
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

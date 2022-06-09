@@ -2,7 +2,9 @@
   <footer class="footer">
     <div class="copyright">
       <p>Copyright</p>
-      <p>All rights reserved <span class="year" id="year">{{ year }}</span></p>
+      <p>
+        All rights reserved <span class="year" id="year">{{ year }}</span>
+      </p>
     </div>
   </footer>
 </template>
@@ -15,11 +17,9 @@ export default {
     year.value = DateTime.now().year;
     return {
       year,
-    }
-  }
-}
+    };
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

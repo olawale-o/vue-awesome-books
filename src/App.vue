@@ -1,23 +1,20 @@
 <template>
   <v-app>
     <v-main>
-      <HelloWorld/>
+      <Books />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Books from './views/Books.vue';
 
 export default {
   name: 'App',
-
   components: {
-    HelloWorld,
+    Books,
   },
-
-  data: () => ({
-    //
-  }),
-}
+};
 </script>
+
+<style></style>
