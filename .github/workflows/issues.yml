@@ -6,8 +6,8 @@ on:
       - opened
 
 jobs:
-  label_issue:
-    name: Label Issue
+  comment_issue:
+    name: Comment Issue
     strategy:
       matrix:
         os: [ubuntu-latest]
