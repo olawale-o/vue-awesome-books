@@ -1,23 +1,11 @@
 name: Linters
 
 on:
-  [push]
+  [pull_request]
 
 jobs:
   eslint:
     name: Eslint
-<<<<<<< HEAD
-    runs-on: ubuntu-18.04
-    steps:
-      - name: Pull Actions
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-      - name: Hello world
-        run: echo "Hello world"
-        
-  
-    
-=======
     strategy:
       matrix:
         node-version: [10.x, 12.x]
@@ -36,4 +24,3 @@ jobs:
           [ -f .eslintrc.js ]
       - name: ESLint Report
         run: npm run lint
->>>>>>> main
