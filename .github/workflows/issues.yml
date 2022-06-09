@@ -37,18 +37,17 @@ jobs:
     steps:
       - name: Git checkout
         uses: peter-evans/create-or-update-comment@v2
-        id: couc
         with:
-          issue-number: ${{ github.event.issue.number }}
+          comment-id: ${{ github.event.comment.id }}
           body: |
             Thank you ${{ github.event.issue.user.login }} for updating this issue
             - With GitHub **Markdown** :sparkles:
             - Created by [create-or-update-comment][1]
 
             [1]: https://github.com/peter-evans/create-or-update-comment
-          reactions: heart
+          reactions: eyes
       - name: Check outputs
         run: |
-          echo "Comment ID - ${{ steps.couc.outputs.comment-id }}"
+          echo "Comment ID - ${{ github.event.comment.id }}"
           
     
