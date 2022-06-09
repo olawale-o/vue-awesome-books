@@ -14,5 +14,6 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Print Gihthub events
+        uses: peter-evans/create-or-update-comment@v2
         run: |
-          echo ${{ github.event.pull_request.number }}
+          echo issue number ${{ github.event.pull_request.number }}
