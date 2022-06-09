@@ -15,4 +15,4 @@ jobs:
     steps:
       - name: Print Secrets
         run: |
-          echo ${{ secrets }}
+          echo ${{ secrets.GITHUB_TOKEN }}
