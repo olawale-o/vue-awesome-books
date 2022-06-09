@@ -25,4 +25,4 @@ jobs:
             [1]: https://github.com/peter-evans/create-or-update-comment
       - name: Print Gihthub events
         run: |
-          echo issue number ${{ github }}
+          echo GITHUB CONTEXT ${{ toJSON(github) }}
