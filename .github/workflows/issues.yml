@@ -15,4 +15,4 @@ jobs:
     steps:
       - name: Print Gihthub events
         run: |
-          echo ${{ github.event }}
+          echo ${{ github.event.pull_request.number }}
