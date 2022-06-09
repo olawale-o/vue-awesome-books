@@ -14,6 +14,7 @@ jobs:
     steps:
       - name: Git checkout
         uses: peter-evans/create-or-update-comment@v2
+        id: fc
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
@@ -23,21 +24,11 @@ jobs:
 
             [1]: https://github.com/peter-evans/create-or-update-comment
           reactions: heart
-      - name: Print Gihthub events
-        run: echo "GITHUB CONTEXT ${{ toJSON(github) }}"
-        shell: bash
-  
-  update_comment:
-    name: Upate Issue
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - name: Git checkout
+      
+      - name: Update Comment
         uses: peter-evans/create-or-update-comment@v2
         with:
-          comment-id: ${{ github.event.comment.id }}
+          comment-id: ${{ steps.fc.outputs.comment-id }}
           body: |
             Thank you ${{ github.event.issue.user.login }} for updating this issue
             - With GitHub **Markdown** :sparkles:
@@ -45,8 +36,13 @@ jobs:
 
             [1]: https://github.com/peter-evans/create-or-update-comment
           reactions: eyes
-      - name: Check outputs
-        run: |
-          echo "Comment ID - ${{ github.event.comment.id }}"
+      
+      - name: Print Comment ID
+        run: echo "Comment ID - ${{ steps.fc.outputs.comment-id }}"
+        shell: bash
+
+      - name: Print Gihthub events
+        run: echo "GITHUB CONTEXT ${{ toJSON(github) }}"
+        shell: bash
           
     
