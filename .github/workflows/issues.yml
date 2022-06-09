@@ -24,6 +24,5 @@ jobs:
 
             [1]: https://github.com/peter-evans/create-or-update-comment
       - name: Print Gihthub events
-        run: |
-          echo 'GITHUB CONTEXT ${{ toJSON(github) }}' | jq
+        run: echo "GITHUB CONTEXT ${{ toJSON(github) }}"
         shell: bash
