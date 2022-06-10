@@ -47,5 +47,9 @@ jobs:
           reactions: heart
       
       - name: Print Comment ID
+        run: echo "Comment ID - ${{ toJSON(github.event.comment) }}"
+        shell: bash
+
+      - name: Print Steps Object
         run: echo "Comment ID - ${{ toJSON(steps) }}"
         shell: bash
