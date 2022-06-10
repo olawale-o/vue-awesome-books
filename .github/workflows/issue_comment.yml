@@ -39,7 +39,7 @@ jobs:
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
-            Thank you ${{ github.event.issue.user.login }} for updating this comment of this issue
+            Thank you ${{ github.event.issue.user.login }} for updating your comment of this issue
             - With GitHub **Markdown** :sparkles:
             - Created by [create-or-update-comment][1]
 
