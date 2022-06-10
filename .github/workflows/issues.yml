@@ -32,19 +32,16 @@ jobs:
 
             [1]: https://github.com/peter-evans/create-or-update-comment
           reactions: heart
-      
-      - name: Update Comment
-        if: steps.fc.outputs.comment-id != ''
+
+      - name: Reply Comment
         uses: peter-evans/create-or-update-comment@v2
         with:
-          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.issue.number }}
           body: |
-            Thank you ${{ github.event.issue.user.login }} for updating this issue
+            Thank you ${{ github.event.issue.user.login }} for updating and replying this issue
             - With GitHub **Markdown** :sparkles:
             - Created by [create-or-update-comment][1]
-
-            [1]: https://github.com/peter-evans/create-or-update-comment
-          reactions: eyes
+          reactions: heart
       
       - name: Print Comment ID
         run: echo "Comment ID - ${{ toJSON(steps) }}"
