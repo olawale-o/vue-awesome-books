@@ -14,14 +14,14 @@ jobs:
     steps:
       - name: Find Comment
         uses: peter-evans/find-comment@v2
-        id: fc
+        id: couc
         with:
           issue-number: ${{ github.event.issue.number }}
           comment-author: 'github-actions[bot]'
           body-includes: issue
       
       - name: Create Comment Issue
-        if: steps.fc.outputs.comment-id == ''
+        if: steps.couc.outputs.comment-id == ''
         uses: peter-evans/create-or-update-comment@v2
         with:
           issue-number: ${{ github.event.issue.number }}
@@ -34,7 +34,7 @@ jobs:
           reactions: heart
 
       - name: Update Comment Issue
-        if: steps.fc.outputs.comment-id != ''
+        if: steps.couc.outputs.comment-id != ''
         uses: peter-evans/create-or-update-comment@v2
         with:
           issue-number: ${{ github.event.issue.number }}
