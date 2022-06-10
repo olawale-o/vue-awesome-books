@@ -32,7 +32,22 @@ jobs:
 
             [1]: https://github.com/peter-evans/create-or-update-comment
           reactions: heart
+      
+      - name: Print Comment ID
+        run: echo "Comment ID - ${{ toJSON(steps) }}"
+        shell: bash
 
+      - name: Print Gihthub events
+        run: echo "GITHUB CONTEXT ${{ toJSON(github) }}"
+        shell: bash
+
+  reply_issue:
+    name: Reply Issue
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:      
       - name: Reply Comment
         uses: peter-evans/create-or-update-comment@v2
         with:
@@ -42,11 +57,3 @@ jobs:
             - With GitHub **Markdown** :sparkles:
             - Created by [create-or-update-comment][1]
           reactions: heart
-      
-      - name: Print Comment ID
-        run: echo "Comment ID - ${{ toJSON(steps) }}"
-        shell: bash
-
-      - name: Print Gihthub events
-        run: echo "GITHUB CONTEXT ${{ toJSON(github) }}"
-        shell: bash
