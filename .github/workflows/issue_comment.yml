@@ -5,19 +5,47 @@ on:
     types: [created, edited]
 
 jobs:
-  reply_issue:
-    name: Reply Issue
+  reply_issue_commet:
+    name: Reply Issue Comment
     strategy:
       matrix:
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
-    steps:      
-      - name: Reply Comment
+    steps:
+      - name: Find Comment
+        uses: peter-evans/find-comment@v2
+        id: fc
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: issue
+      
+      - name: Create Comment Issue
+        if: steps.fc.outputs.comment-id == ''
         uses: peter-evans/create-or-update-comment@v2
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
-            Thank you ${{ github.event.issue.user.login }} for updating and replying this issue
+            Thank you ${{ github.event.issue.user.login }} for commenting on this issue
             - With GitHub **Markdown** :sparkles:
             - Created by [create-or-update-comment][1]
+
+            [1]: https://github.com/peter-evans/create-or-update-comment
           reactions: heart
+
+      - name: Update Comment Issue
+        if: steps.fc.outputs.comment-id == ''
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Thank you ${{ github.event.issue.user.login }} for updating this comment of this issue
+            - With GitHub **Markdown** :sparkles:
+            - Created by [create-or-update-comment][1]
+
+            [1]: https://github.com/peter-evans/create-or-update-comment
+          reactions: heart
+      
+      - name: Print Comment ID
+        run: echo "Comment ID - ${{ toJSON(steps) }}"
+        shell: bash
