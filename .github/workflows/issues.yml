@@ -12,9 +12,17 @@ jobs:
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Git checkout
-        uses: peter-evans/create-or-update-comment@v2
+      - name: Find Comment
+        uses: peter-evans/find-comment@v2
         id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: This comment was written by a bot!
+      
+      - name: Create Comment
+        if: steps.fc.outputs.comment-id == ''
+        uses: peter-evans/create-or-update-comment@v2
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
@@ -26,6 +34,7 @@ jobs:
           reactions: heart
       
       - name: Update Comment
+        if: steps.fc.outputs.comment-id != ''
         uses: peter-evans/create-or-update-comment@v2
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
