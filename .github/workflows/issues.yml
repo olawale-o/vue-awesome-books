@@ -47,11 +47,9 @@ jobs:
           reactions: eyes
       
       - name: Print Comment ID
-        run: echo "Comment ID - ${{ steps.fc.outputs.comment-id }}"
+        run: echo "Comment ID - ${{ toJSON(steps) }}"
         shell: bash
 
       - name: Print Gihthub events
         run: echo "GITHUB CONTEXT ${{ toJSON(github) }}"
         shell: bash
-          
-    
