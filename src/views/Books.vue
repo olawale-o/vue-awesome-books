@@ -1,17 +1,17 @@
 <template>
-  <Tabs>
-    <Tab link="List">
+  <TabsComponent>
+    <TabComponent link="List">
       <div class="books" id="books">
         <div class="book-heading">
           <h2>All awesome books</h2>
         </div>
         <BookComponent @removeBook="onRemoveBook" />
       </div>
-    </Tab>
+    </TabComponent>
     <Tab link="Add new">
       <AddBookComponent @addBook="onFormSubmit" />
     </Tab>
-    <Tab link="Contact">
+    <TabComponent link="Contact">
       <div class="contacts" id="contacts">
         <h2>Contact information</h2>
         <p class="contact_p">
@@ -31,21 +31,21 @@
           <li>Our address: Wall Street 77, 84503 New York, USA</li>
         </ul>
       </div>
-    </Tab>
-  </Tabs>
+    </TabComponent>
+  </TabsComponent>
 </template>
 
 <script>
-import Tabs from '@/components/shared/Tabs.vue';
-import Tab from '@/components/shared/Tab.vue';
+import TabsComponent from '@/components/shared/Tabs.vue';
+import TabComponent from '@/components/shared/Tab.vue';
 import BookComponent from '@/components/BookComponent.vue';
 import AddBookComponent from '@/components/AddBookComponent.vue';
 import { computed } from 'vue';
 import { removeBook, addBook } from '@/store/books/actions/action_creators.js';
 import { useStore } from 'vuex';
 export default {
-  name: 'Books',
-  components: { BookComponent, Tabs, Tab, AddBookComponent },
+  name: 'BooksView',
+  components: { BookComponent, TabsComponent, TabComponent, AddBookComponent },
   setup() {
     const { dispatch, getters } = useStore();
     const books = computed(() => getters['books/books']);

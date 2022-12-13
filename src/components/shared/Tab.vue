@@ -13,7 +13,7 @@
 <script>
 import { inject } from 'vue';
 export default {
-  name: 'Tab',
+  name: 'TabComponent',
   inject: ['currentLink'],
   props: ['link'],
   setup() {
