@@ -26,7 +26,7 @@
         />
         <p id="author-error"></p>
       </div>
-      <input type="submit" value="Add" id="add-book-button" />
+      <input type="submit" value="Add" id="add-book-button" aria-label="Add" />
     </form>
   </div>
 </template>
