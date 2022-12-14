@@ -1,5 +1,5 @@
 name: Linters
-
+run-name: ${{ github.actor }}
 on:
   [push]
 
